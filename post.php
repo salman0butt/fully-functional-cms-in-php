@@ -8,6 +8,9 @@ require_once 'includes/top.php';?>
     <?php
 $post_id = $_GET['post_id'];
 
+$views_query = "UPDATE `posts` SET `views` = views + 1 WHERE `posts`.`id` = $post_id";
+mysqli_query($con, $views_query);
+
 $query = "SELECT * FROM `posts` WHERE `status` = 'publish' and id = $post_id";
 $run = mysqli_query($con, $query);
 if (mysqli_num_rows($run) > 0) {
@@ -24,8 +27,10 @@ if (mysqli_num_rows($run) > 0) {
 	$author = $row['author'];
 	$categories = $row['categories'];
 	$post_data = $row['post_data'];
+    $post_views = $row['views'];
 
-} else {
+} 
+    else {
 	header("Location: index.php");
 }
 
@@ -73,7 +78,8 @@ if (mysqli_num_rows($run) > 0) {
                         </p>
                         <div class="bottom">
                             <span class="first"><i class="fas fa-folder"></i> <a href="">
-                                    <?php echo ucfirst($categories); ?></a></span> | <span class="second"><i class="fas fa-comment"></i> <a href="#"> Comment</a></span>
+                                    <?php echo ucfirst($categories); ?></a></span> | <span class="second"><i class="fas fa-comment"></i> <a href="#"> Comment</a></span> &nbsp;&nbsp;&nbsp;
+                                      | <span class="second"><i class="fas fa-eye"></i> <a href="#"> Views </a> <?php echo $post_views; ?></span>
                         </div>
                     </div>
                     <div class="related-post">
@@ -142,35 +148,81 @@ if (mysqli_num_rows($c_run) > 0) {
                                 <img src="img/<?php echo $c_image; ?>" alt="Profile picture" class="img-circle">
                             </div>
                             <div class="col-sm-10">
-                                <h4><?php echo ucfirst($c_username); ?></h4>
+                                <h4><?php echo ucfirst($c_name); ?></h4>
                                 <p><?php echo $c_comment; ?></p>
                             </div>
                         </div>
                    <?php     } ?>
                     </div>
 
-                <?php }?>
+                <?php }
+
+                        if (isset($_POST['submit'])) {
+                            
+                            $cs_name = $_POST['name'];
+                            $cs_email = $_POST['email'];
+                            $cs_website = $_POST['website'];
+                            $cs_comment = $_POST['comment'];
+                            $cs_date = time();
+
+                            if (empty($cs_name) && empty($cs_email) && empty($cs_comment) ) {
+                                
+                                $error_msg = "All (*) fields are required";
+                            }
+                            else {
+                                $cs_query = "INSERT INTO `comments` (`id`, `date`, `name`, `username`, `post_id`, `email`, `website`, `image`, `comment`, `status`) VALUES (NULL, '$cs_date', '$cs_name', 'user', '$post_id', '$cs_email', '$cs_website', 'unknown-picture.png', '$cs_comment', 'pending')";
+
+                                if (mysqli_query($con, $cs_query)) {
+                                    $msg = "Comment has been submitted and waiting for approval";
+
+                                    $cs_name = "";
+                                    $cs_email = "";
+                                    $cs_website = "";
+                                    $cs_comment = "";
+                                }
+                                else {
+                                        $error_msg = "Comment has been not submitted";
+                                }
+
+                            }
+
+
+                        }
+
+
+
+
+                ?>
                     <div class="comment-box">
                         <div class="row">
                             <div class="col-xs-12">
-                                <form action="#">
+                                <form action="" method="POST">
                                     <div class="form-group">
                                         <label for="full-name">Full Name*</label>
-                                        <input type="text" id="full-name" name="name" class="form-control" placeholder="Full name">
+                                        <input type="text" id="full-name" name="name" value="<?php if(isset($cs_name)) echo $cs_name; ?>" class="form-control" placeholder="Full name">
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email Address*</label>
-                                        <input type="text" id="email" name="email" class="form-control" placeholder="Email Address">
+                                        <input type="text" id="email" name="email" <?php if(isset($cs_email)) echo $cs_email; ?> class="form-control" placeholder="Email Address">
                                     </div>
                                     <div class="form-group">
                                         <label for="website">Website</label>
-                                        <input type="text" id="website" name="website" class="form-control" placeholder="Website URL">
+                                        <input type="text" id="website" name="website" <?php if(isset($cs_website)) echo $cs_website; ?> class="form-control" placeholder="Website URL">
                                     </div>
                                     <div class="form-group">
                                         <label for="full-name">Comment</label>
-                                        <textarea name="comment" id="comment" class="form-control" placeholder="Your Comment should be there" rows="10"></textarea>
+                                        <textarea name="comment" id="comment" <?php if(isset($cs_comment)) echo $cs_comment; ?> class="form-control" placeholder="Your Comment should be there" rows="10"></textarea>
                                     </div>
-                                    <input type="submit" name="submit" class="btn btn-primary" value="Submit Comment"> <span class="pull-right"> Errors Here</span>
+                                    <input type="submit" name="submit" class="btn btn-primary" value="Submit Comment"> 
+                                    <?php 
+                                        if (isset($error_msg)) {
+                                            echo '<span class="pull-right alert alert-danger">'.$error_msg.'</span>';
+                                        }
+                                        else if (isset($msg)) {
+                                            echo '<span class="pull-right alert alert-success">'.$msg.'</span>';
+                                        }
+
+                                     ?>
                                 </form>
                             </div>
                         </div>

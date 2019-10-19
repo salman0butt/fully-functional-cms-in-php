@@ -1,6 +1,6 @@
 <footer>
         <div class="container">
-            Copyright &copy; by <a href="#">Digital MedieXpert</a> | All Rights Reserved from 2019
+            Copyright &copy; by <a href="#">Digital MedieXpert</a> | All Rights Reserved from <?php echo date('Y'); ?>
         </div>
     </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
