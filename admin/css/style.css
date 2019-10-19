@@ -1,0 +1,72 @@
+body {
+	margin: 0;
+	padding-top: 7%;
+}
+.nav li a {
+	color: #fff;
+}
+
+.ts {
+	background-color: #2DA4E7 !important;
+	
+}
+.tc {
+	
+	color: #2DA4E7 !important;
+}
+.huge {
+	font-size:  40px;
+}
+.tag-boxes .panel-primary {
+	border:  1px solid #32FA4E7;
+}
+.tag-boxes .panel-red {
+	background: #d9534f;
+	color: #fff;
+}
+.tag-boxes .panel-red a{
+	color: #d9534f;
+}
+.tag-boxes .panel-red a:hover{
+	color: #b52b27;
+}
+.tag-boxes .panel-yellow {
+	background: #f0ad4e;
+	color: #fff;
+}
+.tag-boxes .panel-yellow a{
+	color: #f0ad4e;
+}
+.tag-boxes .panel-yellow a:hover{
+	color: #df8a13;
+}
+.tag-boxes .panel-green {
+	background: #5cb85c;
+	color: #fff;
+}
+.tag-boxes .panel-green a{
+	color: #5cb85c;
+}
+.tag-boxes .panel-green a:hover{
+	color: #3d8b3d;
+}
+footer {
+	background-color:  #2DA4E7;
+	color: white;
+	height: 50px;
+	line-height: 50px;
+	font-size: 12px;
+}
+footer a {
+	color: white;
+	font-weight: bold;
+}
+footer a:hover {
+	color: white;
+	text-decoration: underline;
+}
+.cate footer{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
