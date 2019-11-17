@@ -66,7 +66,7 @@ footer a:hover {
 	text-decoration: underline;
 }
 .cate footer{
-	position: absolute;
+	/* position: absolute; */
 	bottom: 0px;
 	width: 100%;
 }

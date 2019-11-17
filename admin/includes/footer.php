@@ -1,5 +1,5 @@
   <footer class="text-center">
-      Copyright &copy; by <a href="">Digitalmx.no</a> from 2016 - 2019
+      Copyright &copy; by <a href="">Digitalmx.no</a> from <?php echo date('Y'); ?>
   </footer>
 
 
