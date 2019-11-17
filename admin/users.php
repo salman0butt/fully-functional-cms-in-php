@@ -5,7 +5,7 @@
         $del_id = $_GET['del'];
         $del_query = "DELETE FROM `users` WHERE `id` = $del_id";
         if (mysqli_query($con, $del_query)) {
-            $msg = "USer Has Been Deleted";
+            $msg = "User Has Been Deleted";
         }else {
             $error = "User has not been Deleted";
         }
@@ -51,6 +51,17 @@ require_once 'includes/sidebar.php';
                         </form>
                     </div>
                 </div>
+<?php 
+
+    if (isset($error)) {
+        echo '<span class="alert alert-danger pull-right">'.$error.'</span>';
+}else if(isset($msg)) {
+ echo '<span class="alert alert-success pull-right">'.$msg.'</span>';
+}
+
+ ?>
+
+
                 <?php
 $u_query = "SELECT * FROM users";
 $run = mysqli_query($con, $u_query);
