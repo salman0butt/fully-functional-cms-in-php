@@ -1,4 +1,10 @@
-<?php require_once('includes/top.php'); ?>
+<?php 
+require_once('includes/top.php'); 
+if (!isset($_SESSION['username'])) {
+    header('Location: logout.php');
+}
+
+?>
 </head>
 
 <body>

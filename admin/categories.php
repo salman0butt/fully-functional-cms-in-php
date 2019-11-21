@@ -1,4 +1,8 @@
-<?php require_once('includes/top.php'); ?>
+<?php require_once('includes/top.php');
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+}
+ ?>
 </head>
 
 <body class="cate">

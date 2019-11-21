@@ -1,6 +1,11 @@
+
 <?php require_once '../includes/db.php';?>
 <?php require_once 'includes/top.php';?>
-
+<?php 
+if (!isset($_SESSION['username'])) {
+    header('Location: logout.php');
+}
+ ?>
 </head>
 
 <body class="cate">
