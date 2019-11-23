@@ -5,6 +5,9 @@
 if (!isset($_SESSION['username'])) {
     header('Location: logout.php');
 }
+else if(!isset($_SESSION['username']) && $_SESSION['role' == 'author']){
+    header('Location: index.php');
+}
  ?>
 </head>
 

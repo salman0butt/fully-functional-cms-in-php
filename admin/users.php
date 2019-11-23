@@ -6,7 +6,7 @@ if (!isset($_SESSION['username'])) {
     header('Location: logout.php');
 }
 else if(!isset($_SESSION['username']) && $_SESSION['role' == 'author']){
-    header('Location: logout.php');
+    header('Location: index.php');
 }
 
  ?>
@@ -14,11 +14,13 @@ else if(!isset($_SESSION['username']) && $_SESSION['role' == 'author']){
 if (isset($_GET['del'])) {
 	$del_id = $_GET['del'];
 	$del_query = "DELETE FROM `users` WHERE `id` = $del_id";
-	if (mysqli_query($con, $del_query)) {
-		$msg = "User Has Been Deleted";
-	} else {
-		$error = "User has not been Deleted";
-	}
+	if (isset($_SESSION['username']) && $_SESSION['role'] == 'admin') {
+        if (mysqli_query($con, $del_query)) {
+        $msg = "User Has Been Deleted";
+        } else {
+            $error = "User has not been Deleted";
+        }
+    }
 }
 
 if (isset($_POST['checkboxes'])) {
@@ -155,7 +157,7 @@ if (mysqli_num_rows($run) > 0) {
                                 <td>
                                     <?php echo ucfirst($role); ?>
                                 </td>
-                                <td><a href="edit.php?edit=<?php echo $id; ?>"><i class="fa fa-edit"></i></a></td>
+                                <td><a href="edit-user.php?edit=<?php echo $id; ?>"><i class="fa fa-edit"></i></a></td>
                                 <td><a href="users.php?del=<?php echo $id; ?>"><i class="fa fa-trash"></i></a></td>
                             </tr>
                             <?php }
