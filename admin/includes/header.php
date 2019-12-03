@@ -7,8 +7,8 @@
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><i class="fas fa-plus-square"></i> Add Post</a></li>
             <li><a href="add-user.php"><i class="fas fa-user-plus"></i> Add User</a></li>
-            <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
-            <li><a href="#"><i class="fas fa-power-off"></i> Logout</a></li>
+            <li><a href="profile.php"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="logout.php"><i class="fas fa-power-off"></i> Logout</a></li>
         </ul>
     </div>
 </nav>

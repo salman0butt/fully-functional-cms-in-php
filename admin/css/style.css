@@ -70,3 +70,13 @@ footer a:hover {
 	bottom: 0px;
 	width: 100%;
 }
+/* footer {
+	position: absolute !important;
+	bottom: 0px;
+    width: 100% !important;
+} */
+body#profile img#profile-image {
+	-webkit-box-shadow: -2px -1px 11px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px -1px 11px 0px rgba(0,0,0,0.75);
+     box-shadow: -2px -1px 11px 0px rgba(0,0,0,0.75);
+}
