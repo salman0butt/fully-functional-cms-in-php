@@ -118,7 +118,18 @@ while ($r_row = mysqli_fetch_array($r_run)) {
                                 <h4>
                                     <?php echo ucfirst($author); ?>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore consectetur minima maiores voluptatum voluptates suscipit reiciendis possimus at reprehenderit magnam vel perferendis dicta molestias amet doloremque, enim aliquam esse maxime?</p>
+                                <?php 
+                                    $bio_query = "SELECT * FROM `users` WHERE `username`= '$author'";
+                                    $bio_run = mysqli_query($con, $bio_query);
+                                    if (mysqli_num_rows($bio_run) > 0) {
+                                        $bio_row = mysqli_fetch_array($bio_run);
+                                        $author_details = $bio_row['details'];
+                                        
+                                 ?>
+                                <p><?php echo $author_details; ?></p>
+                                <?php 
+                               }
+                                 ?>
                             </div>
                         </div>
                     </div>

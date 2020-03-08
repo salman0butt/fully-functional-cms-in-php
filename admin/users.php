@@ -12,14 +12,20 @@ else if(!isset($_SESSION['username']) && $_SESSION['role' == 'author']){
  ?>
 <?php
 if (isset($_GET['del'])) {
-	$del_id = $_GET['del'];
-	$del_query = "DELETE FROM `users` WHERE `id` = $del_id";
-	if (isset($_SESSION['username']) && $_SESSION['role'] == 'admin') {
-        if (mysqli_query($con, $del_query)) {
-        $msg = "User Has Been Deleted";
-        } else {
-            $error = "User has not been Deleted";
+    $del_id = $_GET['del'];
+    $del_check = "SELECT * FROM `users` WHERE `id` = $del_id";
+    $run_del_check = mysqli_query($con, $del_check);
+    if (mysqli_num_rows($run_del_check) > 0) {
+        $del_query = "DELETE FROM `users` WHERE `id` = $del_id";
+        if (isset($_SESSION['username']) && $_SESSION['role'] == 'admin') {
+            if (mysqli_query($con, $del_query)) {
+                $msg = "Comment Has Been Deleted";
+            } else {
+                $error = "Comment has not been Deleted";
+            }
         }
+    }else {
+        header('Location: index.php');
     }
 }
 

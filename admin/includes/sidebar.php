@@ -2,11 +2,11 @@
     <a href="index.php" class="list-group-item active ts">
         <i class="fas fa-tachometer-alt"></i> Dashboard
     </a>
-    <a href="#" class="list-group-item">
+    <a href="post.php" class="list-group-item">
         <span class="badge ts">99</span>
         <i class="fas fa-file-alt"></i> All Posts
     </a>
-    <a href="#" class="list-group-item">
+    <a href="comments.php" class="list-group-item">
         <span class="badge ts">40</span>
         <i class="fas fa-comment"></i> Comments
     </a>
