@@ -6,6 +6,10 @@
         <span class="badge ts">99</span>
         <i class="fas fa-file-alt"></i> All Posts
     </a>
+    <a href="media.php" class="list-group-item">
+        <span class="badge ts">69</span>
+        <i class="fas fa-database"></i> Media
+    </a>
     <a href="comments.php" class="list-group-item">
         <span class="badge ts">40</span>
         <i class="fas fa-comment"></i> Comments
